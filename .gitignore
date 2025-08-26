@@ -16,6 +16,16 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+!.env.example
+
+# Private keys and sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+bless-deploy.key
+private-keys/
+secrets/
 
 # Logs
 logs
