@@ -1,0 +1,28 @@
+name = "blessedmon-nft-generator"
+version = "1.0.0"
+type = "web"
+production_host = "brown-leopon-dareen-eqgzgufe.bls.dev"
+
+[deployment]
+permission = "public"
+nodes = 1
+
+[build]
+dir = "build"
+entry = "blessedmon-nft-generator_debug.wasm"
+command = "npm run build:debug"
+
+[build_release]
+dir = "build"
+entry = "blessedmon-nft-generator.wasm"
+command = "npm run build:release"
+
+[[deployments]]
+name = "blessnet"
+description = ""
+cid = "bafybeidwbr6t7phiukkmpwcbvqghpu46l5flomle6bg4wgpa43dfr6wvpm"
+created = "2025-08-26T06:23:59.299Z"
+
+  [deployments.runtime]
+  url = "blessnet.tar.gz"
+  checksum = "c55f750c73cb562254c307cb3640cf10979f2b27ab5e74af87def9446c013f13"

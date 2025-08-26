@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlessMon NFT Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/monad-logo.png?v=2" alt="Monad Logo" class="logo-icon">
+            <h1>BlessMon NFT Generator</h1>
+            <img src="images/bless-logo.png?v=2" alt="Bless Network Logo" class="logo-icon">
+        </div>
+        <div class="app-intro">
+            <p>Create, mint, and own unique NFTs on the Monad blockchain. Upload your images, add descriptions, and mint with $MON tokens. Built on Bless Network for seamless deployment.</p>
+        </div>
+        <div class="wallet-info">
+            <div id="connectionStatus" class="connection-status"></div>
+            <span id="walletAddress"></span>
+            <button id="connectWalletBtn" class="btn primary">Connect Wallet</button>
+            <button id="disconnectWalletBtn" class="btn disconnect-btn">Disconnect</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="upload-section">
+                <h2>Upload Your Image</h2>
+                <div id="dropZone" class="drop-zone">
+                    <p>Drag & drop your image here or click to browse</p>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="preview-section">
+                    <img id="imagePreview" class="image-preview" style="display: none;">
+                </div>
+                
+                <div class="nft-details">
+                    <div class="form-group">
+                        <label for="nftName">NFT Name:</label>
+                        <input type="text" id="nftName" placeholder="Enter NFT name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nftDescription">Description:</label>
+                        <textarea id="nftDescription" placeholder="Enter NFT description" rows="3" required></textarea>
+                    </div>
+                </div>
+                
+                <div class="gas-status-section">
+                    <h3>Gas Information</h3>
+                    <div id="gasStatus" class="gas-status">
+                        <p>Connect wallet to see current gas prices</p>
+                    </div>
+                </div>
+                
+                <button id="mintBtn" class="btn primary" disabled>Mint NFT</button>
+            </div>
+
+            <div class="transaction-section">
+                <h3>Transaction Status</h3>
+                <div id="transactionStatus" class="transaction-status"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Built by <span class="studio-text">BamzzStudio</span> with <span class="love-emoji">❤️</span> on <span class="monad-text">Monad</span> and deployed on <span class="bless-text">Bless Network</span></p>
+    </footer>
+
+    <!-- Load ethers library first - using reliable CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" type="application/javascript"></script>
+    
+    <!-- Fallback CDN if the first one fails -->
+    <script>
+        if (typeof ethers === 'undefined') {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/ethers@5.7.2/dist/ethers.umd.min.js';
+            script.onload = function() {
+                console.log('Ethers loaded from fallback CDN');
+                // Reinitialize the app if it was already loaded
+                if (window.nftGenerator) {
+                    window.nftGenerator.init();
+                }
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+    
+    <!-- Load our configuration and scripts after ethers -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

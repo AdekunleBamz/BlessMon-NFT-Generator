@@ -1,0 +1,36 @@
+{
+    "name": "blessedmon-nft-generator",
+    "version": "1.0.0",
+    "description": "NFT Generator for Monad Testnet on Bless Network",
+    "main": "index.js",
+    "scripts": {
+        "clean": "rm -rf build",
+        "build:release": "mkdirp ./build && bls-sdk-ts build ./index.ts -o ./build -f release.wasm",
+        "build:debug": "mkdirp ./build && bls-sdk-ts build ./index.ts -o ./build -f debug.wasm",
+        "invoke": "bls-runtime ./build/blessedmon-nft-generator.wasm",
+        "deploy:contract": "node contracts/deploy.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/blocklessnetwork/template-javy-typescript-hello-world.git"
+    },
+    "author": "Blockless",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/blocklessnetwork/template-javy-typescript-hello-world/issues"
+    },
+    "homepage": "https://github.com/blocklessnetwork/template-javy-typescript-hello-world#readme",
+    "dependencies": {
+        "@blockless/sdk-ts": "^1.0.5",
+        "ethers": "^6.8.1",
+        "mkdirp": "^3.0.1"
+    },
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+        "@openzeppelin/contracts": "^5.4.0",
+        "hardhat": "^2.26.3"
+    },
+    "bls": {
+        "functionId": "bless-function_blessedmon-nft-generator-1.0.0"
+    }
+}
